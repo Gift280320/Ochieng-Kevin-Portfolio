@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import myImg from "../../Assets/avatar.svg";
+import myImg from "../../Assets/myphoto.jpg";
 import Tilt from "react-parallax-tilt";
 
 function Home2() {
@@ -33,10 +33,10 @@ function Home2() {
               <i>
                 <b className="purple">
                   {" "}
-                  Web Applications, Scalable Systems,{" "}
+                  Web Applications, Scalable Systems{" "}
                 </b>
               </i>
-              and exploring inovative ways to merge modern technologies for practical solutions.
+              and exploring innovative ways to merge modern technologies for practical solutions.
               <br />
               <br />
               Whenever possible, I love building projects with
@@ -47,9 +47,19 @@ function Home2() {
               </i>
             </p>
           </Col>
+
           <Col md={4} className="myAvtar">
             <Tilt>
-              <img src={myImg} className="img-fluid" alt="avatar" />
+              <img
+                src={myImg}
+                alt="Ochieng Kevin Madara"
+                className="img-fluid"
+                style={{
+                  borderRadius: "50%",
+                  maxWidth: "280px",
+                  border: "4px solid #6c63ff"
+                }}
+              />
             </Tilt>
           </Col>
         </Row>
@@ -57,4 +67,5 @@ function Home2() {
     </Container>
   );
 }
+
 export default Home2;

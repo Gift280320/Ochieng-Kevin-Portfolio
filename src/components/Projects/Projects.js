@@ -2,12 +2,13 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import ProjectCard from "./ProjectCards";
 import Particle from "../Particle";
-import leaf from "../../Assets/Projects/leaf.png";
-import emotion from "../../Assets/Projects/emotion.png";
-import editor from "../../Assets/Projects/codeEditor.png";
-import chatify from "../../Assets/Projects/chatify.png";
-import suicide from "../../Assets/Projects/suicide.png";
-import bitsOfCode from "../../Assets/Projects/blog.png";
+
+// Project images
+import schoolMgmt from "../../Assets/Projects/school-management.png";
+import ellyCrotchets from "../../Assets/Projects/elly-crochets.png";
+import medicalChatbot from "../../Assets/Projects/medical-chatbot.png";
+import propertyMgmt from "../../Assets/Projects/property-manager.png";
+import mealPlanner from "../../Assets/Projects/meal-planner.png";
 
 function Projects() {
   return (
@@ -15,76 +16,70 @@ function Projects() {
       <Particle />
       <Container>
         <h1 className="project-heading">
-          My Recent <strong className="purple">Works </strong>
+          My Recent <strong className="purple">Works</strong>
         </h1>
         <p style={{ color: "white" }}>
           Here are a few projects I've worked on recently.
         </p>
+
         <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
+          {/* School Management System */}
           <Col md={4} className="project-card">
             <ProjectCard
-              imgPath={chatify}
+              imgPath={schoolMgmt}
               isBlog={false}
-              title="Chatify"
-              description="Personal Chat Room or Workspace to share resources and hangout with friends build with react.js, Material-UI, and Firebase. Have features which allows user for realtime messaging, image sharing as well as supports reactions on messages."
-              ghLink="https://github.com/soumyajit4419/Chatify"
-              demoLink="https://chatify-49.web.app/"
+              title="School Management System"
+              description="A full-featured system for managing student records, courses, teachers, and fees. Built with React.js, Node.js, and MongoDB."
+              ghLink="https://github.com/Gift280320/School-Management-System.git"
+              demoLink="https://school-management-system-pi-livid.vercel.app/"
             />
           </Col>
 
+          {/* Elly's Crotchets Ecommerce */}
           <Col md={4} className="project-card">
             <ProjectCard
-              imgPath={bitsOfCode}
+              imgPath={ellyCrotchets}
               isBlog={false}
-              title="Bits-0f-C0de"
-              description="My personal blog page build with Next.js and Tailwind Css which takes the content from makdown files and renders it using Next.js. Supports dark mode and easy to write blogs using markdown."
-              ghLink="https://github.com/soumyajit4419/Bits-0f-C0de"
-              demoLink="https://blogs.soumya-jit.tech/"
+              title="Elly's Crotchets Ecommerce"
+              description="An online store for buying custom crocheted products. Built with React.js and integrated with a payment gateway for seamless purchases."
+              ghLink="https://github.com/Gift280320/Elly-s-Crotchets.git"
+              demoLink="https://elly-s-crotchets.vercel.app/"
             />
           </Col>
 
+          {/* Medical Consultation Chatbot */}
           <Col md={4} className="project-card">
             <ProjectCard
-              imgPath={editor}
+              imgPath={medicalChatbot}
               isBlog={false}
-              title="Editor.io"
-              description="Online code and markdown editor build with react.js. Online Editor which supports html, css, and js code with instant view of website. Online markdown editor for building README file which supports GFM, Custom Html tags with toolbar and instant preview.Both the editor supports auto save of work using Local Storage"
-              ghLink="https://github.com/soumyajit4419/Editor.io"
-              demoLink="https://editor.soumya-jit.tech/"              
+              title="Medical Consultation Chatbot"
+              description="An AI-powered chatbot for medical consultation. Built with Python, Streamlit, and integrated with NLP models for accurate responses."
+              ghLink="https://github.com/Gift280320/medical-chatbot.git"
+              demoLink="https://huggingface.co/spaces/Gift254/medical-chatbot"
             />
           </Col>
 
+          {/* Property Management Website */}
           <Col md={4} className="project-card">
             <ProjectCard
-              imgPath={leaf}
+              imgPath={propertyMgmt}
               isBlog={false}
-              title="Plant AI"
-              description="Used the plant disease dataset from Kaggle and trained a image classifer model using 'PyTorch' framework using CNN and Transfer Learning with 38 classes of various plant leaves. The model was successfully able to detect diseased and healthy leaves of 14 unique plants. I was able to achieve an accuracy of 98% by using Resnet34 pretrained model."
-              ghLink="https://github.com/soumyajit4419/Plant_AI"
-              demoLink="https://plant49-ai.herokuapp.com/"
+              title="Mwaura Property Management Website"
+              description="A web application for managing properties, tenants, and rental payments. Built with React.js, Node.js, and Firebase for backend services."
+              ghLink="https://github.com/Gift280320/Property-Management-Website.git"
+              demoLink="https://ubiquitous-rolypoly-401f23.netlify.app/"
             />
           </Col>
 
+          {/* Kenyan Weekly Meal Planner */}
           <Col md={4} className="project-card">
             <ProjectCard
-              imgPath={suicide}
+              imgPath={mealPlanner}
               isBlog={false}
-              title="Ai For Social Good"
-              description="Using 'Natural Launguage Processing' for the detection of suicide-related posts and user's suicide ideation in cyberspace  and thus helping in sucide prevention."
-              ghLink="https://github.com/soumyajit4419/AI_For_Social_Good"
-              // demoLink="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley" <--------Please include a demo link here
-            />
-          </Col>
-
-          <Col md={4} className="project-card">
-            <ProjectCard
-              imgPath={emotion}
-              isBlog={false}
-              title="Face Recognition and Emotion Detection"
-              description="Trained a CNN classifier using 'FER-2013 dataset' with Keras and tensorflow backened. The classifier sucessfully predicted the various types of emotions of human. And the highest accuracy obtained with the model was 60.1%.
-              Then used Open-CV to detect the face in an image and then pass the face to the classifer to predict the emotion of a person."
-              ghLink="https://github.com/soumyajit4419/Face_And_Emotion_Detection"
-              // demoLink="https://blogs.soumya-jit.tech/"      <--------Please include a demo link here 
+              title="Kenyan Weekly Meal Planner"
+              description="A meal planning app that helps users plan nutritious meals for the week. Built with React.js and Tailwind CSS."
+              ghLink="https://github.com/Gift280320/Meal-Planner.git"
+              demoLink="https://merry-jelly-1378ae.netlify.app/"
             />
           </Col>
         </Row>
