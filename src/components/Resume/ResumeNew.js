@@ -2,29 +2,49 @@ import React, { useState, useEffect } from "react";
 import { Container, Row } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Particle from "../Particle";
-import resumePdf from "../../Assets/Ochieng_Kevin_Madara_CV.pdf";
 import { AiOutlineDownload } from "react-icons/ai";
 import { Document, Page, pdfjs } from "react-pdf";
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
+// ✅ Public folder PDF
+const resumeLink = "/Ochieng_Kevin_Madara_CV.pdf";
+
+// ✅ PDF worker fix (important for Vercel / production)
+pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
 function ResumeNew() {
   const [width, setWidth] = useState(1200);
+  const [numPages, setNumPages] = useState(null);
 
   useEffect(() => {
     setWidth(window.innerWidth);
   }, []);
 
+  function onDocumentLoadSuccess({ numPages }) {
+    setNumPages(numPages);
+  }
+
   return (
     <div>
-      <Container fluid className="resume-section">
+      <Container
+        fluid
+        className="resume-section"
+        style={{
+          minHeight: "100vh",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "20px",
+        }}
+      >
         <Particle />
 
-        <Row style={{ justifyContent: "center", position: "relative" }}>
+        {/* 🔥 Top Download Button */}
+        <Row style={{ justifyContent: "center", marginBottom: "20px" }}>
           <Button
             variant="primary"
-            href={resumePdf}
+            href={resumeLink}
             target="_blank"
             style={{ maxWidth: "250px" }}
           >
@@ -33,22 +53,49 @@ function ResumeNew() {
           </Button>
         </Row>
 
-        <Row className="resume">
-          <Document
-            file={resumePdf}
-            className="d-flex justify-content-center"
+        {/* 📄 PDF CENTER VIEW */}
+        <Row
+          className="resume"
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            width: "100%",
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              width: "100%",
+            }}
           >
-            <Page
-              pageNumber={1}
-              scale={width > 786 ? 1.7 : 0.6}
-            />
-          </Document>
+            <Document
+              file={resumeLink}
+              onLoadSuccess={onDocumentLoadSuccess}
+              loading={<p style={{ textAlign: "center" }}>Loading CV...</p>}
+              error={
+                <p style={{ textAlign: "center", color: "red" }}>
+                  Failed to load CV
+                </p>
+              }
+            >
+              {Array.from(new Array(numPages), (el, index) => (
+                <Page
+                  key={`page_${index + 1}`}
+                  pageNumber={index + 1}
+                  scale={width > 786 ? 1.6 : 0.6}
+                />
+              ))}
+            </Document>
+          </div>
         </Row>
 
-        <Row style={{ justifyContent: "center", position: "relative" }}>
+        {/* 🔥 Bottom Download Button */}
+        <Row style={{ justifyContent: "center", marginTop: "20px" }}>
           <Button
             variant="primary"
-            href={resumePdf}
+            href={resumeLink}
             target="_blank"
             style={{ maxWidth: "250px" }}
           >
